@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #box{
+
+
+        width: 300px;
+        height: 300px;
+        background-color: red;
+        display:none;
+        position: relative;
+    }
+</style>
+<body>
+
+    <div><h1>Time: <h2 id="times"></h2></h1></div>
+    <div id="box"></div>
+   
+    
+
+    <script>
+
+// variables
+var box = document.getElementById('box');
+var createdTime, clickedTime, reactionTime;
+
+
+
+// Get Random place Method
+function RandomPLace(){
+
+var num;
+num = Math.random();
+
+num *= 555;
+
+num = Math.floor(num);
+
+
+return num;
+};
+
+// Get Random color method
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+document.getElementById('box').style.backgroundColor=color;
+};
+function makebox(){
+createdTime = Date.now();
+var time;
+time = Math.random();
+time *= 3500;
+setTimeout(function(){
+
+box.style.display='block';
+}, time)
+
+}
+
+
+// On Cick Action
+document.getElementById('box').onclick=function(){
+clickedTime = Date.now();
+
+getRandomColor();
+
+
+// reaction time in click
+reactionTime = (clickedTime - createdTime) / 1000;
+document.getElementById('times').innerHTML = reactionTime + "s";
+
+
+    this.style.display='none';
+
+    makebox()
+
+    // circle or box ?
+    t = Math.random();
+
+    t *= 20;
+
+    t = Math.floor(t);
+
+    if (t >= 8){
+
+document.getElementById('box').style.borderRadius="300px";
+
+
+
+}
+
+    document.getElementById('box').style.position = "relative";
+    document.getElementById('box').style.top=  RandomPLace() + 'px';
+    document.getElementById('box').style.bottom=  RandomPLace() + 'px';
+    document.getElementById('box').style.left=  RandomPLace() + 'px';
+
+}
+
+// make a box in loaded site
+makebox()
+
+    </script>
+</body>
+</html>
